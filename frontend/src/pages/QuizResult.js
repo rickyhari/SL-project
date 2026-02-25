@@ -40,7 +40,7 @@ const QuizResult = () => {
         >
           <div className="inline-block mb-6">
             <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center border-4 border-border shadow-brutal mx-auto">
-              <Trophy className="w-12 h-12 text-primary-foreground\" />
+              <Trophy className="w-12 h-12 text-primary-foreground" />
             </div>
           </div>
 
