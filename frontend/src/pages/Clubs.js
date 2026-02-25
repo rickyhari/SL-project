@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
-import { Search, Filter } from "lucide-react";
+import { Search, GitCompare } from "lucide-react";
 import api from "../lib/api";
 import { Input } from "../components/ui/input";
 
