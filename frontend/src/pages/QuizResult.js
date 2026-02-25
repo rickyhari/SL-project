@@ -117,4 +117,49 @@ const QuizResult = () => {
                   <Button
                     onClick={() => navigate(`/clubs/${rec.club_id}`)}
                     data-testid={`view-club-${index}-button`}
-                    size=\"sm\"\n                    className=\"rounded-full border-2 border-border shadow-brutal-sm hover:translate-y-[-2px] hover:shadow-brutal transition-all\"\n                  >\n                    View Club\n                    <ArrowRight className=\"w-4 h-4 ml-2\" />\n                  </Button>\n                </div>\n              </div>\n            </motion.div>\n          ))}\n        </div>\n\n        {/* Action Buttons */}\n        <motion.div\n          initial={{ opacity: 0, y: 20 }}\n          animate={{ opacity: 1, y: 0 }}\n          transition={{ delay: 1 }}\n          className=\"flex flex-col sm:flex-row gap-4 justify-center\"\n        >\n          <Button\n            onClick={() => navigate(\"/clubs\")}\n            data-testid=\"explore-all-button\"\n            size=\"lg\"\n            className=\"rounded-full border-2 border-border shadow-brutal-sm hover:translate-y-[-2px] hover:shadow-brutal transition-all px-8\"\n          >\n            <Target className=\"w-5 h-5 mr-2\" />\n            Explore All Clubs\n          </Button>\n\n          <Button\n            onClick={() => navigate(\"/dashboard\")}\n            data-testid=\"go-to-dashboard-button\"\n            variant=\"outline\"\n            size=\"lg\"\n            className=\"rounded-full border-2 px-8\"\n          >\n            Go to Dashboard\n            <TrendingUp className=\"w-5 h-5 ml-2\" />\n          </Button>\n        </motion.div>\n      </div>\n    </div>\n  );\n};\n\nexport default QuizResult;
+                    size="sm"
+                    className="rounded-full border-2 border-border shadow-brutal-sm hover:translate-y-[-2px] hover:shadow-brutal transition-all"
+                  >
+                    View Club
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button
+            onClick={() => navigate("/clubs")}
+            data-testid="explore-all-button"
+            size="lg"
+            className="rounded-full border-2 border-border shadow-brutal-sm hover:translate-y-[-2px] hover:shadow-brutal transition-all px-8"
+          >
+            <Target className="w-5 h-5 mr-2" />
+            Explore All Clubs
+          </Button>
+
+          <Button
+            onClick={() => navigate("/dashboard")}
+            data-testid="go-to-dashboard-button"
+            variant="outline"
+            size="lg"
+            className="rounded-full border-2 px-8"
+          >
+            Go to Dashboard
+            <TrendingUp className="w-5 h-5 ml-2" />
+          </Button>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default QuizResult;
