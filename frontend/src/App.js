@@ -12,6 +12,8 @@ import QuizResult from "./pages/QuizResult";
 import Clubs from "./pages/Clubs";
 import ClubDetail from "./pages/ClubDetail";
 import Dashboard from "./pages/Dashboard";
+import QnA from "./pages/QnA";
+import CompareClubs from "./pages/CompareClubs";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -72,10 +74,26 @@ function AppContent() {
           }
         />
         <Route
+          path="/clubs/compare"
+          element={
+            <ProtectedRoute>
+              <CompareClubs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/qna"
+          element={
+            <ProtectedRoute>
+              <QnA />
             </ProtectedRoute>
           }
         />
