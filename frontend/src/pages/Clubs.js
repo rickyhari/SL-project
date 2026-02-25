@@ -84,9 +84,18 @@ const Clubs = () => {
           <h1 className="font-syne text-4xl md:text-5xl font-extrabold mb-4">
             Explore All Clubs
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg mb-4">
             Find the perfect club that matches your interests and passion
           </p>
+          <Button
+            onClick={() => navigate("/clubs/compare")}
+            data-testid="compare-clubs-nav-button"
+            variant="outline"
+            className="rounded-full border-2 px-6"
+          >
+            <GitCompare className="w-4 h-4 mr-2" />
+            Compare Clubs
+          </Button>
         </motion.div>
 
         {/* Search and Filter */}
