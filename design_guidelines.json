@@ -1,0 +1,161 @@
+{
+  "project_name": "College Club Compass",
+  "design_philosophy": {
+    "persona": "E1 - The Anti-AI Designer",
+    "core_concept": "Neo-Brutalism Lite / Vibrant Play",
+    "vibe": "Controlled Chaos, Authentic, High-Energy, Student-Centric",
+    "principles": [
+      "Fusion over Imitation: Mix academic structure with street-style aesthetics.",
+      "Emotion First: Every interaction should feel like a high-five.",
+      "Content is King: Text is visual. Use typography as image.",
+      "Contrast: Hard edges, bold colors, no wishy-washy gradients."
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Syne, sans-serif",
+      "body": "Manrope, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "import_url": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Syne:wght@400;700;800&display=swap",
+    "scale": {
+      "h1": "text-5xl md:text-7xl font-extrabold tracking-tight leading-none",
+      "h2": "text-4xl md:text-5xl font-bold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-bold",
+      "body": "text-base md:text-lg leading-relaxed",
+      "caption": "text-sm font-medium uppercase tracking-widest"
+    }
+  },
+  "colors": {
+    "palette_name": "Electric Campus",
+    "light_mode": {
+      "background": "#FFFFFF",
+      "foreground": "#000000",
+      "primary": "#CCFF00",
+      "primary_foreground": "#000000",
+      "secondary": "#FF0099",
+      "accent": "#000000",
+      "border": "#000000"
+    },
+    "dark_mode": {
+      "background": "#0A0A0A",
+      "foreground": "#FFFFFF",
+      "primary": "#00FFFF",
+      "primary_foreground": "#000000",
+      "secondary": "#BF00FF",
+      "accent": "#FFFFFF",
+      "border": "#FFFFFF"
+    },
+    "usage_rules": [
+      "NEVER use gradients for backgrounds. Use solid colors or noise textures.",
+      "Primary color is for high-impact accents (buttons, highlights).",
+      "Borders are MANDATORY for cards and inputs. Use 2px solid borders.",
+      "Shadows should be HARD (no blur): shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+    ]
+  },
+  "layout": {
+    "spacing": {
+      "container_padding": "p-6 md:p-12",
+      "section_gap": "gap-12 md:gap-24",
+      "element_gap": "gap-4 md:gap-8"
+    },
+    "grid_system": {
+      "marketing": "Bento Grid (Tetris Mode): grid-cols-1 md:grid-cols-12 gap-4",
+      "dashboard": "High Density Grid: grid-cols-1 md:grid-cols-4 gap-4",
+      "club_explorer": "Masonry-style or uneven grid to break monotony"
+    },
+    "containers": {
+      "card": "bg-card text-card-foreground border-2 border-border shadow-[4px_4px_0px_0px_var(--shadow-color)] rounded-xl p-6",
+      "button": "px-8 py-3 rounded-full font-bold border-2 border-border shadow-[2px_2px_0px_0px_var(--shadow-color)] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_var(--shadow-color)] transition-all active:translate-y-[0px] active:shadow-none"
+    }
+  },
+  "components": {
+    "shadcn_customization": {
+      "radius": "0.75rem",
+      "border_width": "2px",
+      "shadow": "4px 4px 0px 0px currentColor"
+    },
+    "specific_components": {
+      "navbar": "Floating pill shape with glassmorphism OR solid border-bottom with marquee.",
+      "hero": "Split screen or large typography overlay on noise texture.",
+      "quiz_card": "Large, clickable cards with icons. Progress bar must be chunky.",
+      "club_card": "Image top, bold title, tags as pill badges. 'Bookmark' button must be prominent."
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Use subtle noise overlays (opacity 0.05) to kill digital flatness.",
+    "motion": {
+      "library": "framer-motion",
+      "default_transition": {
+        "type": "spring",
+        "stiffness": 400,
+        "damping": 30
+      },
+      "scroll": "Use 'lenis' for smooth scrolling momentum."
+    },
+    "decorations": [
+      "Marquee text (react-fast-marquee) for announcements or 'Club Compass' branding.",
+      "Hand-drawn arrows or scribbles (SVG) to point at CTAs.",
+      "Sticker-like badges for 'New', 'Popular', 'Recommended'."
+    ]
+  },
+  "image_urls": {
+    "hero": {
+      "url": "https://images.unsplash.com/photo-1662148931662-8089bc1a67be?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwY2FtcHVzJTIwZmVzdGl2YWwlMjBjcm93ZHxlbnwwfHx8fDE3NzIwNDg3NDB8MA&ixlib=rb-4.1.0&q=85",
+      "alt": "College campus festival crowd",
+      "usage": "Hero background or main visual"
+    },
+    "community": {
+      "url": "https://images.unsplash.com/photo-1758270704524-596810e891b5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwY29sbGVnZSUyMHN0dWRlbnRzJTIwbGF1Z2hpbmclMjBjYW1wdXN8ZW58MHx8fHwxNzcyMDQ4NzA1fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Diverse students laughing",
+      "usage": "Community/About section"
+    },
+    "clubs": [
+      {
+        "category": "Robotics",
+        "url": "https://images.pexels.com/photos/31868218/pexels-photo-31868218.jpeg",
+        "alt": "Robotics club students building"
+      },
+      {
+        "category": "Music",
+        "url": "https://images.unsplash.com/photo-1770844049822-583611b8efb3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwbXVzaWMlMjBiYW5kJTIwcGVyZm9ybWluZ3xlbnwwfHx8fDE3NzIwNDg3MTB8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "College music band performing"
+      },
+      {
+        "category": "Hackathon",
+        "url": "https://images.pexels.com/photos/1181260/pexels-photo-1181260.jpeg",
+        "alt": "Students coding at hackathon"
+      },
+      {
+        "category": "Debate",
+        "url": "https://images.unsplash.com/photo-1648250537652-a648421c588c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwZGViYXRlJTIwY2x1YiUyMHN0dWRlbnRzJTIwdGFsa2luZ3xlbnwwfHx8fDE3NzIwNDg3MzZ8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Debate club discussion"
+      },
+      {
+        "category": "Sports",
+        "url": "https://images.unsplash.com/photo-1761258772633-316a6dd5080e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwc3BvcnRzJTIwdGVhbSUyMGh1ZGRsZXxlbnwwfHx8fDE3NzIwNDg3Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Sports team huddle"
+      }
+    ]
+  },
+  "instructions_to_main_agent": {
+    "setup": [
+      "Install 'framer-motion', 'clsx', 'tailwind-merge', 'lucide-react', 'react-fast-marquee', '@lenis/react'.",
+      "Update 'tailwind.config.js' to include the custom colors and border radius.",
+      "Add the Google Fonts import to 'index.css'."
+    ],
+    "implementation_rules": [
+      "Use 'data-testid' for all interactive elements.",
+      "Ensure Dark Mode toggle works and persists.",
+      "Implement the 'Neo-Brutalism' shadow style using Tailwind arbitrary values or a custom utility class.",
+      "For the Quiz: Make it feel like a game. One question per screen, smooth transitions.",
+      "For the Dashboard: Keep it clean but use the bold borders to separate widgets."
+    ],
+    "universal_guidelines": [
+      "Avoid 'AI Slop' (generic centered layouts, soft gradients).",
+      "Use 2-3x more spacing than you think is necessary.",
+      "Micro-animations on EVERYTHING (hover, click, focus).",
+      "Do not use 'Inter' for headings. Use 'Syne'."
+    ]
+  }
+}
