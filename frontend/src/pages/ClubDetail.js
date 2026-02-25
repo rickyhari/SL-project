@@ -158,4 +158,109 @@ const ClubDetail = () => {
             {/* Quick Info */}
             <div className="grid md:grid-cols-3 gap-4">
               <div className="flex items-center gap-3 p-4 bg-muted rounded-lg border-2 border-border">
-                <Clock className="w-6 h-6 text-primary\" />\n                <div>\n                  <div className=\"text-xs text-muted-foreground font-medium\">\n                    Time Commitment\n                  </div>\n                  <div className=\"font-bold\">{club.time_commitment}</div>\n                </div>\n              </div>\n\n              <div className=\"flex items-center gap-3 p-4 bg-muted rounded-lg border-2 border-border\">\n                <Users className=\"w-6 h-6 text-primary\" />\n                <div>\n                  <div className=\"text-xs text-muted-foreground font-medium\">\n                    Members\n                  </div>\n                  <div className=\"font-bold\">{club.member_count} students</div>\n                </div>\n              </div>\n\n              <div className=\"flex items-center gap-3 p-4 bg-muted rounded-lg border-2 border-border\">\n                <Award className=\"w-6 h-6 text-primary\" />\n                <div>\n                  <div className=\"text-xs text-muted-foreground font-medium\">\n                    Recruitment\n                  </div>\n                  <div\n                    className={`font-bold ${\n                      club.recruitment_status === \"Open\"\n                        ? \"text-green-600 dark:text-green-400\"\n                        : club.recruitment_status === \"Upcoming\"\n                        ? \"text-yellow-600 dark:text-yellow-400\"\n                        : \"text-red-600 dark:text-red-400\"\n                    }`}\n                  >\n                    {club.recruitment_status}\n                  </div>\n                </div>\n              </div>\n            </div>\n\n            {/* Description */}\n            <div>\n              <h2 className=\"font-syne text-2xl font-bold mb-4\">About</h2>\n              <p className=\"text-muted-foreground leading-relaxed text-lg\">\n                {club.description}\n              </p>\n            </div>\n\n            {/* Skills */}\n            <div>\n              <h2 className=\"font-syne text-2xl font-bold mb-4\">\n                Skills You'll Gain\n              </h2>\n              <div className=\"flex flex-wrap gap-3\">\n                {club.skills.map((skill, index) => (\n                  <span\n                    key={index}\n                    className=\"px-4 py-2 bg-primary/10 text-primary border-2 border-primary rounded-full font-medium\"\n                  >\n                    {skill}\n                  </span>\n                ))}\n              </div>\n            </div>\n\n            {/* Tags */}\n            {club.tags.length > 0 && (\n              <div>\n                <h2 className=\"font-syne text-2xl font-bold mb-4\">Tags</h2>\n                <div className=\"flex flex-wrap gap-2\">\n                  {club.tags.map((tag, index) => (\n                    <span\n                      key={index}\n                      className=\"px-3 py-1 bg-muted rounded-md text-sm font-medium border border-border\"\n                    >\n                      #{tag}\n                    </span>\n                  ))}\n                </div>\n              </div>\n            )}\n\n            {/* Contact */}\n            <div className=\"p-6 bg-primary/5 rounded-xl border-2 border-primary/20\">\n              <h2 className=\"font-syne text-xl font-bold mb-3\">\n                Interested? Get in Touch!\n              </h2>\n              <div className=\"flex items-center gap-3\">\n                <Mail className=\"w-5 h-5 text-primary\" />\n                <a\n                  href={`mailto:${club.contact}`}\n                  data-testid=\"contact-email\"\n                  className=\"text-primary font-medium hover:underline\"\n                >\n                  {club.contact}\n                </a>\n              </div>\n            </div>\n          </div>\n        </motion.div>\n      </div>\n    </div>\n  );\n};\n\nexport default ClubDetail;
+                <Clock className="w-6 h-6 text-primary" />
+                <div>
+                  <div className="text-xs text-muted-foreground font-medium">
+                    Time Commitment
+                  </div>
+                  <div className="font-bold">{club.time_commitment}</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 p-4 bg-muted rounded-lg border-2 border-border">
+                <Users className="w-6 h-6 text-primary" />
+                <div>
+                  <div className="text-xs text-muted-foreground font-medium">
+                    Members
+                  </div>
+                  <div className="font-bold">{club.member_count} students</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 p-4 bg-muted rounded-lg border-2 border-border">
+                <Award className="w-6 h-6 text-primary" />
+                <div>
+                  <div className="text-xs text-muted-foreground font-medium">
+                    Recruitment
+                  </div>
+                  <div
+                    className={`font-bold ${
+                      club.recruitment_status === "Open"
+                        ? "text-green-600 dark:text-green-400"
+                        : club.recruitment_status === "Upcoming"
+                        ? "text-yellow-600 dark:text-yellow-400"
+                        : "text-red-600 dark:text-red-400"
+                    }`}
+                  >
+                    {club.recruitment_status}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div>
+              <h2 className="font-syne text-2xl font-bold mb-4">About</h2>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                {club.description}
+              </p>
+            </div>
+
+            {/* Skills */}
+            <div>
+              <h2 className="font-syne text-2xl font-bold mb-4">
+                Skills You'll Gain
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {club.skills.map((skill, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-primary/10 text-primary border-2 border-primary rounded-full font-medium"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Tags */}
+            {club.tags.length > 0 && (
+              <div>
+                <h2 className="font-syne text-2xl font-bold mb-4">Tags</h2>
+                <div className="flex flex-wrap gap-2">
+                  {club.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-muted rounded-md text-sm font-medium border border-border"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Contact */}
+            <div className="p-6 bg-primary/5 rounded-xl border-2 border-primary/20">
+              <h2 className="font-syne text-xl font-bold mb-3">
+                Interested? Get in Touch!
+              </h2>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary" />
+                <a
+                  href={`mailto:${club.contact}`}
+                  data-testid="contact-email"
+                  className="text-primary font-medium hover:underline"
+                >
+                  {club.contact}
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default ClubDetail;
