@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useTheme } from "../contexts/ThemeContext";
-import { Moon, Sun, LogOut, User, BookMarked, Home, Compass } from "lucide-react";
+import { Moon, Sun, LogOut, User, Home, Compass, MessageCircle, GitCompare } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 
@@ -39,6 +39,26 @@ const Navbar = () => {
                   >
                     <Home className="w-4 h-4" />
                     Clubs
+                  </Button>
+                </Link>
+                <Link to="/clubs/compare" data-testid="nav-compare-link">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="hidden md:flex items-center gap-2"
+                  >
+                    <GitCompare className="w-4 h-4" />
+                    Compare
+                  </Button>
+                </Link>
+                <Link to="/qna" data-testid="nav-qna-link">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="hidden md:flex items-center gap-2"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Ask Seniors
                   </Button>
                 </Link>
                 <Link to="/dashboard" data-testid="nav-dashboard-link">
