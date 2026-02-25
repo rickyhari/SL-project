@@ -148,6 +148,49 @@ class Bookmark(BaseModel):
     club_id: str
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# Q&A System Models
+class QuestionCreate(BaseModel):
+    title: str
+    description: str
+    is_anonymous: bool = False
+
+class ReplyCreate(BaseModel):
+    content: str
+
+class Reply(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    content: str
+    user_id: str
+    user_name: str
+    user_role: str
+    user_verified: bool
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class Question(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    title: str
+    description: str
+    user_id: str
+    user_name: str
+    user_role: str
+    is_anonymous: bool = False
+    replies: List[Reply] = []
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class QuestionResponse(BaseModel):
+    id: str
+    title: str
+    description: str
+    user_id: str
+    user_name: str
+    user_role: str
+    is_anonymous: bool
+    replies: List[Dict[str, Any]]
+    reply_count: int
+    created_at: str
+
 # Helper functions
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
