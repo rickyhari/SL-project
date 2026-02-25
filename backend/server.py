@@ -599,6 +599,114 @@ async def get_bookmarks(current_user: dict = Depends(get_current_user)):
     clubs = await db.clubs.find({"id": {"$in": club_ids}}, {"_id": 0}).to_list(100)
     return clubs
 
+# Q&A System Endpoints
+@api_router.post("/questions")
+async def create_question(question_data: QuestionCreate, current_user: dict = Depends(get_current_user)):
+    question = Question(
+        title=question_data.title,
+        description=question_data.description,
+        user_id=current_user["id"],
+        user_name="Anonymous" if question_data.is_anonymous else current_user["name"],
+        user_role=current_user["role"],
+        is_anonymous=question_data.is_anonymous
+    )
+    
+    question_doc = question.model_dump()
+    question_doc["created_at"] = question_doc["created_at"].isoformat()
+    
+    await db.questions.insert_one(question_doc)
+    return {"message": "Question posted successfully", "question_id": question.id}
+
+@api_router.get("/questions")
+async def get_questions(skip: int = 0, limit: int = 20):
+    questions = await db.questions.find({}, {"_id": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
+    
+    response = []
+    for q in questions:
+        response.append(QuestionResponse(
+            id=q["id"],
+            title=q["title"],
+            description=q["description"],
+            user_id=q["user_id"],
+            user_name=q["user_name"],
+            user_role=q["user_role"],
+            is_anonymous=q["is_anonymous"],
+            replies=q.get("replies", []),
+            reply_count=len(q.get("replies", [])),
+            created_at=q["created_at"]
+        ))
+    
+    return response
+
+@api_router.get("/questions/{question_id}")
+async def get_question(question_id: str):
+    question = await db.questions.find_one({"id": question_id}, {"_id": 0})
+    if not question:
+        raise HTTPException(status_code=404, detail="Question not found")
+    
+    return QuestionResponse(
+        id=question["id"],
+        title=question["title"],
+        description=question["description"],
+        user_id=question["user_id"],
+        user_name=question["user_name"],
+        user_role=question["user_role"],
+        is_anonymous=question["is_anonymous"],
+        replies=question.get("replies", []),
+        reply_count=len(question.get("replies", [])),
+        created_at=question["created_at"]
+    )
+
+@api_router.post("/questions/{question_id}/replies")
+async def add_reply(question_id: str, reply_data: ReplyCreate, current_user: dict = Depends(get_current_user)):
+    question = await db.questions.find_one({"id": question_id})
+    if not question:
+        raise HTTPException(status_code=404, detail="Question not found")
+    
+    reply = Reply(
+        content=reply_data.content,
+        user_id=current_user["id"],
+        user_name=current_user["name"],
+        user_role=current_user["role"],
+        user_verified=current_user["verified"]
+    )
+    
+    reply_doc = reply.model_dump()
+    reply_doc["created_at"] = reply_doc["created_at"].isoformat()
+    
+    await db.questions.update_one(
+        {"id": question_id},
+        {"$push": {"replies": reply_doc}}
+    )
+    
+    return {"message": "Reply added successfully"}
+
+@api_router.delete("/questions/{question_id}")
+async def delete_question(question_id: str, current_user: dict = Depends(get_current_user)):
+    question = await db.questions.find_one({"id": question_id})
+    if not question:
+        raise HTTPException(status_code=404, detail="Question not found")
+    
+    # Only the question author can delete it
+    if question["user_id"] != current_user["id"]:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this question")
+    
+    await db.questions.delete_one({"id": question_id})
+    return {"message": "Question deleted successfully"}
+
+# Compare Clubs Endpoint
+@api_router.post("/clubs/compare")
+async def compare_clubs(club_ids: List[str]):
+    if len(club_ids) != 2:
+        raise HTTPException(status_code=400, detail="Please provide exactly 2 club IDs")
+    
+    clubs = await db.clubs.find({"id": {"$in": club_ids}}, {"_id": 0}).to_list(2)
+    
+    if len(clubs) != 2:
+        raise HTTPException(status_code=404, detail="One or both clubs not found")
+    
+    return clubs
+
 app.include_router(api_router)
 
 app.add_middleware(
